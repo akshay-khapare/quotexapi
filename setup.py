@@ -1,52 +1,69 @@
-# setup.py
+[tool.poetry]
+name = "quotexapi"
+version = "1.40.7"
+description = "📈 QuotexPy is a library to easily interact with qxbroker."
+authors = [
+    'akshay-khapare'
+]
 
-from os import path
-from distutils.core import setup
-from setuptools import find_packages
+repository = "https://github.com/akshay-khapare/quotexapi"
+readme = ["README.md"]
+keywords = ["quotex", "quotexapi"]
+license = "LGPL-2.1"
+packages = [
+  {include = "quotexapi"}
+]
 
-this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+[tool.poetry.dependencies]
+python = ">=3.8, <3.13"
+beautifulsoup4 = "4.11.2"
+certifi = ">=2022.12.7"
+greenlet = ">=2.0.1"
+undetected-chromedriver = ">=3.5.5"
+pyOpenSSL = ">=23.1.1"
+pytz = ">=2023.3"
+requests = ">=2.31.0"
+requests-toolbelt = ">=1.0.0"
+urllib3 = ">=2.0.5"
+websocket-client = ">=1.6.3"
+websockets = ">=11.0.3"
+psutil = ">=5.9.8"
+setuptools = ">=70.0.0"
 
-setup(
-    name='quotexapi',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    packages=find_packages(),
-    version='1.0.0',
-    license='MIT',
-    description='Quotex Api Client written in python.',
-    author='Cleiton Leonel Creton',
-    author_email='cleiton.leonel@gmail.com',
-    url='https://github.com/cleitonleonel/pyquotex.git',
-    download_url='https://github.com/cleitonleonel/pyquotex/archive/v_1.0.0.tar.gz',
-    keywords=['SOME', 'MEANINGFULL', 'KEYWORDS'],
-    install_requires=[
-        'setuptools',
-        'wheel',
-        "certifi",
-        "greenlet",
-        "pyOpenSSL",
-        "pytz",
-        "requests-toolbelt",
-        'requests',
-        'beautifulsoup4',
-        'websocket-client',
-        'playwright',
-        'playwright-stealth',
-        'pyfiglet',
-        'numpy'
-    ],
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
-        'Programming Language :: Python :: 3.12',
-    ],
+[tool.poetry.dev-dependencies]
+black = "^23.9.1"
+poetry = "^1.6.1"
+poetry2setup = "^1.1.0"
+pylint = "^2.17.5"
+pytest = "^7.4.2"
+schedule = ">=1.2.1"
+shutup = "0.2.0"
+termcolor = "^2.3.0"
+
+[tool.black]
+line-length = 120
+target-version = ['py310', 'py311', 'py312']
+exclude = '''
+(
+  /(
+    \.eggs           # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | foo.py           # also separately exclude a file named foo.py in
+                     # the root of the project
 )
+'''
+
+
+[build-system]
+requires = ["poetry-core"]
+python_requires = ">=3.10"
+build-backend = "poetry.core.masonry.api"
